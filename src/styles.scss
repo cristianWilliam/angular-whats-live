@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'colors' as *;
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap');
+
+.red {
+  background-color: red !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $background-3;
+  font-size: 1.4rem;
+
+  * {
+    box-sizing: border-box;
+    color: $fonte;
+    font-family: 'Dosis', sans-serif;
+  }
+}
