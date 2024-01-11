@@ -1,27 +1,29 @@
-# AngularWhatsLive
+# Clone do WhatsApp - Projeto Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Olá, devs! Mergulhe no desenvolvimento de um clone do WhatsApp com Angular, acompanhando tudo ao vivo no YouTube!
 
-## Development server
+## Pré-Requisitos
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Antes de tudo, confira se você tem o Node.js e o npm instalados.
 
-## Code scaffolding
+## Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Para botar a mão na massa com este projeto, siga estes passos:
 
-## Build
+1. Clone o repositório.
+2. No terminal, vá até a pasta do projeto.
+3. Rode `npm i` para instalar as dependências.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Rodando o Projeto
 
-## Running unit tests
+Com as dependências no lugar, é só iniciar:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+npm start
+```
 
-## Running end-to-end tests
+Pronto! Acesse `http://localhost:4201` no navegador e veja a mágica acontecer.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Lives no YouTube
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Fique por dentro de cada detalhe do desenvolvimento. Confira as lives na [playlist do YouTube](https://www.youtube.com/playlist?list=PLMFE0Mu3BVy76T7bZw773jwi329Wl5TMu) e embarque nessa jornada comigo!
