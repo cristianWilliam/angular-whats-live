@@ -1,8 +1,11 @@
 import { environment } from "@@environment/environment";
 import { HttpClient } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
+import { Injectable, effect, inject, signal } from "@angular/core";
+import { Router } from "@angular/router";
 import { catchError, forkJoin, map, of, switchMap, tap } from "rxjs";
 import { LocalDb } from "../local-db/local-db";
+import { AuthLoginResponse } from "./auth-login-response.model";
+import { UserStorageInfo } from "./user-storage-info.model";
 import { User } from "./user.model";
 
 @Injectable({
@@ -12,6 +15,17 @@ export class UserService {
 
   private http = inject(HttpClient);
   private urlApi = `${environment.urlApi}/user`
+  private authUrlApi = `${environment.urlApi}/auth`;
+  private userInfo = signal<UserStorageInfo | null>(null);
+  private router = inject(Router);
+
+  constructor(){
+    effect(() => this.syncUserInfoLocalStorage());
+  }
+
+  syncUserInfoLocalStorage(){
+    localStorage.setItem('UserData', JSON.stringify(this.userInfo()))
+  }
 
   getUsers(){
     return this.http.get<User[]>(`${this.urlApi}`)
@@ -73,4 +87,35 @@ export class UserService {
     return this.http.put(`${this.urlApi}/${userId}/image`, formData);
   }
 
+  login(userId: string){
+    return this.http.post<AuthLoginResponse>(this.authUrlApi, { userId })
+  }
+
+  setCurrentUser(user: UserStorageInfo){
+    this.userInfo.set(user);
+  }
+
+  getUserInfoSignal(){
+    return this.userInfo.asReadonly();
+  }
+
+  isUserLogged(){
+    console.log('testando', this.userInfo());
+    return !!this.userInfo();
+  }
+
+  trySyncLocalStorage(){
+    const localStorageData = localStorage.getItem('UserData');
+
+    if (!localStorageData)
+      return;
+
+    const userData: UserStorageInfo = JSON.parse(localStorageData);
+    this.userInfo.set(userData);
+  }
+
+  logout(){
+    this.userInfo.set(null);
+    this.router.navigate(['login']);
+  }
 }
