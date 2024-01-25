@@ -1,0 +1,26 @@
+@use 'colors' as *;
+
+:host {
+  display: block;
+  background-color: $background;
+  padding: 20px 10px;
+  border-right: 2px solid $background-3;
+}
+
+.container {
+  height: calc(80vh - 81px);
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+
+    &-track {
+      background-color: $background;
+    }
+
+    &-thumb {
+      background-color: $background-2;
+      border-radius: 7px;
+    }
+  }
+}

@@ -1,17 +1,21 @@
 import { JsonPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { UserService } from '../../../users/user.service';
+import { ConversationListComponent } from '../../ui/conversation-list/conversation-list.component';
 
 @Component({
   standalone: true,
-  imports: [ JsonPipe ],
+  imports: [ 
+    JsonPipe, 
+    ConversationListComponent 
+  ],
   template: `
-    <p>
-      usuario Logado: {{ userInfo()!.name }}
-    </p>
+    <div class="container">
+      <app-conversation-list/>
 
-    <div>
-      <button (click)="logoutClick()"> Logout </button>
+      <div class="cor-2">
+        cor 2
+      </div>
     </div>
   `,
   styleUrl: './conversation-page.component.scss'
@@ -19,8 +23,4 @@ import { UserService } from '../../../users/user.service';
 export default class ConversationPageComponent {
   private userService = inject(UserService);
   protected userInfo = this.userService.getUserInfoSignal();
-
-  logoutClick(){
-    this.userService.logout();
-  }
 }

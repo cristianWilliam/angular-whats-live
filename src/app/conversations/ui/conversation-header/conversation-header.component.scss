@@ -1,0 +1,43 @@
+@use 'colors' as *;
+
+:host {
+  display: block;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 50px 1fr 30px;
+  align-items: center;
+  font-size: 1rem;
+  margin-bottom: 10px;
+
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  button {
+    border: 0;
+    background-color: transparent;
+    color: $fonte;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-2;
+    }
+  }
+}
+
+input {
+  width: 100%;
+  background-color: $background-2;
+  border: 1px solid $background-3;
+  border-radius: 12px;
+  outline: none;
+  padding: 5px 20px;
+}

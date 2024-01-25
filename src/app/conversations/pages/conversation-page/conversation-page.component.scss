@@ -1,3 +1,23 @@
+@use 'colors' as *;
+
 :host {
-  display: block;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  place-items: center;
+}
+
+.container {
+  width: 70vw;
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  background-color: $background-2;
+}
+
+.cor {
+
+  &-2 {
+    background-color: $background-2;
+  }
 }

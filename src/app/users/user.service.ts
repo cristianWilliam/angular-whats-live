@@ -18,6 +18,7 @@ export class UserService {
   private authUrlApi = `${environment.urlApi}/auth`;
   private userInfo = signal<UserStorageInfo | null>(null);
   private router = inject(Router);
+  private localDb = new LocalDb();
 
   constructor(){
     effect(() => this.syncUserInfoLocalStorage());
@@ -100,7 +101,6 @@ export class UserService {
   }
 
   isUserLogged(){
-    console.log('testando', this.userInfo());
     return !!this.userInfo();
   }
 
@@ -112,6 +112,12 @@ export class UserService {
 
     const userData: UserStorageInfo = JSON.parse(localStorageData);
     this.userInfo.set(userData);
+  }
+
+  getCurrentUserImageUrl(){
+    return this.localDb.getUserImage(this.userInfo()!.id)
+      .pipe(
+        map(blob => !!blob ? URL.createObjectURL(blob) : ''));
   }
 
   logout(){

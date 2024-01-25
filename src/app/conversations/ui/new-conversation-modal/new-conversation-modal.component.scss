@@ -1,0 +1,33 @@
+@use 'colors' as *;
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.container {
+  padding: 20px;
+  background-color: $background;
+  width: 400px;
+
+  button {
+    float: right;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+
+    &:hover {
+      background-color: $background-2;
+    }
+  }
+}
