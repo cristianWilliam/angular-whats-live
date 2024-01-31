@@ -1,8 +1,23 @@
-:host {
-  display: block;
+@use 'colors' as *;
+@use 'profile-image' as *;
 
-  span {
-    font-size: 1rem;
-    margin-left: 5px;
+:host {
+  display: flex;
+  align-items: center;
+  padding: 5px 0px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $background-2;
   }
 }
+
+span {
+  font-size: .9rem
+}
+
+img {
+  @extend .profile-image;
+  margin-right: 10px;
+}
+

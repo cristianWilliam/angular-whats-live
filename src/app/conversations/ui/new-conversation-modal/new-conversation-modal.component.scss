@@ -1,4 +1,5 @@
 @use 'colors' as *;
+@use 'profile-image' as *;
 
 :host {
   position: absolute;
@@ -28,6 +29,23 @@
 
     &:hover {
       background-color: $background-2;
+    }
+  }
+
+  .user {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    padding: 5px 20px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-2;
+    }
+
+    img {
+      @extend .profile-image;
+      margin-right: 5px;
     }
   }
 }

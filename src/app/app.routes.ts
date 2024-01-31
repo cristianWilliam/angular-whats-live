@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { ConversationMessagesPageComponent } from './conversations/pages/conversation-messages-page/conversation-messages-page.component';
 import { isUserLoggedGuard } from './guards/is-user-logged.can-activate.guard';
 import { LoginPageComponent } from './users/pages/login-page/login-page.component';
 
@@ -15,6 +16,12 @@ export const routes: Routes = [
   {
     path: 'conversations',
     loadComponent: () => import('./conversations/pages/conversation-page/conversation-page.component'),
-    canActivate: [ isUserLoggedGuard ]
+    canActivate: [ isUserLoggedGuard ],
+    children: [
+      {
+        path: ':userId',
+        component: ConversationMessagesPageComponent
+      }
+    ]
   }
 ];

@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { catchError, forkJoin, map, of, switchMap, tap } from "rxjs";
 import { LocalDb } from "../local-db/local-db";
 import { AuthLoginResponse } from "./auth-login-response.model";
+import { UserImage } from "./user-image.model";
 import { UserStorageInfo } from "./user-storage-info.model";
 import { User } from "./user.model";
 
@@ -118,6 +119,19 @@ export class UserService {
     return this.localDb.getUserImage(this.userInfo()!.id)
       .pipe(
         map(blob => !!blob ? URL.createObjectURL(blob) : ''));
+  }
+
+  getLocalUsers(){
+    return this.localDb.getUsers()
+      .pipe(
+        map(localUsers => localUsers
+          .map(localUser => ({
+            user: {
+              id: localUser.id,
+              name: localUser.name
+            },
+            imageUrl: localUser.imageBlob && URL.createObjectURL(localUser.imageBlob)
+          }) as UserImage)));
   }
 
   logout(){

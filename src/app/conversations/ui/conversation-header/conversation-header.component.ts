@@ -28,6 +28,6 @@ export class ConversationHeaderComponent {
   protected userInfo = this.userService.getUserInfoSignal();
   protected userImageUrl$ = this.userService.getCurrentUserImageUrl();
 
-  protected showModal = true;
+  protected showModal = false;
 
 }

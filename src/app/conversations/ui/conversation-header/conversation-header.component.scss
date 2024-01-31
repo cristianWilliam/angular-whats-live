@@ -1,4 +1,5 @@
 @use 'colors' as *;
+@use 'profile-image' as *;
 
 :host {
   display: block;
@@ -12,11 +13,7 @@
   margin-bottom: 10px;
 
   img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
+    @extend .profile-image;
   }
 
   button {
@@ -40,4 +37,5 @@ input {
   border-radius: 12px;
   outline: none;
   padding: 5px 20px;
+  margin-bottom: 5px;
 }
