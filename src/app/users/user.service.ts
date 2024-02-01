@@ -134,6 +134,18 @@ export class UserService {
           }) as UserImage)));
   }
 
+  getLocalUserById(userId: string){
+    return this.localDb.getUserById(userId)
+      .pipe(
+        map(localUserImage => ({
+            user: {
+              id: localUserImage!.id,
+              name: localUserImage!.name,
+            },
+            imageUrl: !!localUserImage?.imageBlob ? URL.createObjectURL(localUserImage.imageBlob) : null
+        }) as UserImage))
+  }
+
   logout(){
     this.userInfo.set(null);
     this.router.navigate(['login']);

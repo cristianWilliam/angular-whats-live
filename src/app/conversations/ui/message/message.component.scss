@@ -1,0 +1,29 @@
+@use 'colors' as *;
+
+:host {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.container {
+  display: flex;
+  
+  &.is-mine {
+    justify-content: flex-end;
+  }
+  
+  .balloon {
+    background-color: $highlight;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+
+    .time {
+      align-self: flex-end;
+      font-size: .8rem;
+      margin-left: 15px;
+      color: $fonte-2;
+    }
+  }
+}

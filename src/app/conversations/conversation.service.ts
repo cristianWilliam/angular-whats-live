@@ -42,4 +42,13 @@ export class ConversationService {
       )  
     ;
   }
+
+  publishMessage(conversationUserId: string, message: string){
+    this.localDb.saveMessage({
+      time: new Date(),
+      message: message,
+      mine: true,
+      conversationUserId: conversationUserId
+    });
+  }
 }
